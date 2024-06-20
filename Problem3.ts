@@ -1,10 +1,10 @@
 // For the first requirement
 interface BroadcastTransactionServicePayload {
   symbol: string,
-  price: BigInteger,
-  timestamp: BigInteger
+  price: number,
+  timestamp: number
 }
-const BroadcastTransactionService = async (symbol: string, price: BigInteger, timestamp: BigInteger) => {
+const BroadcastTransactionService = async (symbol: string, price: number, timestamp: number) => {
   const payload: BroadcastTransactionServicePayload = {
     symbol,
     price,
@@ -41,3 +41,5 @@ const TransactionStatusMonitoring = async (tx_hash: string) => {
   )
   return response.json()["tx_status"]
 }
+
+export {BroadcastTransactionService,TransactionStatusMonitoring}

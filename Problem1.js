@@ -8,34 +8,20 @@ var BossBabyRevenge = function (inputString) {
     // Check single character input
     if (inputString.length < 2)
         return "Bad boy";
-    //Another case where we can return "Bad boy" is when revenge (R) is less than Shot (S)
-    var inputArray = inputString.split("");
-    var numS = 0;
-    var numR = 0;
-    for (var i = 0; i < inputArray.length; i++) {
-        if (inputArray[i] === "S")
-            numS++;
-        else
-            numR++;
+    // For the remaining case we will use a stack to solve the problem
+    var stack = [];
+    for (var i = 0; i < inputString.length; i++) {
+        // If we see "S" push it to the stack
+        if (inputString[i] === "S")
+            stack.push(inputString[i]);
+        // If we see "R" pop a "S" out of the stack (meaning that a shot has been revenged)
+        // If the stack is empty and we see a "R" then we skip it since a shot can be revenged multiple times
+        if (inputString[i] === "R" && stack.length > 0)
+            stack.pop();
     }
-    if (numR < numS)
-        return "Bad boy";
-    else {
-        // For the remaining case we will use a stack to solve the problem
-        var stack = [];
-        for (var i = 0; i < inputString.length; i++) {
-            // If we see "S" push it to the stack
-            if (inputString[i] === "S")
-                stack.push(inputString[i]);
-            // If we see "R" pop a "S" out of the stack (meaning that a shot has been revenged)
-            // If the stack is empty and we see a "R" then we skip it since a shot can be revenged multiple times
-            if (inputString[i] === "R" && stack.length > 0)
-                stack.pop();
-        }
-        // If any "S" is still in the stack that means it has not been revenged
-        // else we have revenged all shots
-        return stack.length > 0 ? "Bad boy" : "Good boy";
-    }
+    // If any "S" is still in the stack that means it has not been revenged
+    // else we have revenged all shots
+    return stack.length > 0 ? "Bad boy" : "Good boy";
 };
 //---PROVIDED TEST CASES--- 
 console.log("---PROVIDED TEST CASES---");
