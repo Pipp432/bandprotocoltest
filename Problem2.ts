@@ -34,4 +34,4 @@ console.log(ChickenRescue(5, [1, 2, 3, 20, 21, 22, 23, 24, 25]))
 
 // Time Complexity: O(log n) due to for each iteration of the for and while loop we do not go through the entire array with
 // average case being log n
-// Space Complexity: O(1), all operations are done in place and no additional data structures are used
+// Space Complexity: O(1), all operations are done in place and no additional data structures are use 
